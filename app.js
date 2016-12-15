@@ -11,6 +11,8 @@ var express = require('express');
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 var cfenv = require('cfenv');
+var basicAuth = require('basic-auth-connect');
+app.use(basicAuth('tfhd', 'tfhd2016'));
 
 // create a new express server
 var app = express();

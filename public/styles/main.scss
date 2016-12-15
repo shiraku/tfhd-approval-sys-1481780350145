@@ -1,0 +1,153 @@
+// ===================================================================
+// 設定
+// ===================================================================
+$icon-font-path: '../fonts/';
+$set_prefix: -webkit-, -moz-, -ms-, -o-, '';  
+
+//フォントカラー変数
+$color-level1: #c20000;
+$color-level2: #89ce27;
+$color-level3: #ff8b00;
+
+
+//フォントカラー変数
+$size-main: 14pt;
+$size-s: 10pt;
+$size-l: 15pt;
+$size-xl: 16pt;
+
+// 画像のパス
+$img_path: "../img/";
+
+// ベースフォント
+$base_font: "メイリオ", "Meiryo", verdana, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
+$base_font_ie: "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
+
+
+
+// ===================================================================
+// mixin
+// ===================================================================
+
+// border-radius
+@mixin border_radius($br_value) {
+	@each $prefix in $set_prefix {
+		#{$prefix}border-radius: $br_value;
+	}
+}
+@mixin border_radius_custom($br_top, $br_right, $br_bottom, $br_left) {
+	@each $prefix in $set_prefix {
+		#{$prefix}border-radius: $br_top $br_right $br_bottom $br_left;
+	}
+}
+  
+// drop-shadow
+@mixin drop_shadow($x, $y, $size, $spread, $color) {
+	@each $prefix in $set_prefix {
+		#{$prefix}box-shadow: $x $y $size $spread $color;
+	}
+}
+  
+// background-size
+@mixin bg_size($w, $h: auto) {
+	@each $prefix in $set_prefix {
+		#{$prefix}background-size: $w $h;
+	}
+}
+// min-height
+@mixin min_height($value) {
+	min-height: $value;
+	_height: $value;
+}
+
+
+
+// ===================================================================
+// bootstrap読み込み
+// ===================================================================
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+
+
+
+
+// ===================================================================
+// bootstrap override
+// ===================================================================
+html,body {
+  font-size: $size-main;
+  background: #dddbcf;
+}
+
+
+// ===================================================================
+// オリジナル定義
+// ===================================================================
+//utility
+.font-small {
+  font-size: $size-s;
+}
+
+//ヘッダー
+.navbar-light {
+  background: #ffffff;
+}
+h1 {
+  margin-top: 10px; 
+  text-align: center;
+  font-size: $size-l;
+}
+
+.nav-link-back {
+  position: absolute;
+  left: 20px;
+  top:10px;
+}
+
+.nav-link-sort {
+  position: absolute;
+  right: 20px;
+  top:10px;
+}
+
+//申請待一覧
+.cards-wrapper{
+  padding: 0 20px
+}
+
+.card {
+  padding: 0;
+  background: #ffffff;
+  @include border_radius(10px);
+  @include drop_shadow(0,2px,7px,0,rgba(0, 0, 0, 0.15));
+  
+  .card-title{
+    padding: 10px 20px;
+    color: #ffffff;
+    @include border_radius_custom(10px,10px,0,0);
+    
+    span {
+      font-size: $size-s;
+      position: absolute;
+    }
+  }
+  h2 {
+    margin: 0;
+    font-size: $size-l;
+    text-align: center;
+  }
+}
+.card-expense{
+  .card-title{
+    background: #89ce27;
+  }
+}
+
+.card-info__basic{
+  
+  strong{
+    font-weight: normal;
+  }
+}

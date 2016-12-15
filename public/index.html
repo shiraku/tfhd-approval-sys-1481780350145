@@ -1,26 +1,109 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html class="no-js" lang="">
   <head>
-    <title>NodeJS Starter Application</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>approval_html</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
   </head>
-
   <body>
-    <table>
-      <tr>
-        <td style= "width:30%;">
-          <img class = "newappIcon" src="images/newapp-icon.png">
-        </td>
-        <td>
-          <h1 id="message">Hello World!</h1>
-          <p class='description'></p> Thanks for creating a <span class = "blue">NodeJS Starter Application</span>.
-        </td>
-      </tr>
-    </table>
-  </body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <div class="container-fulid">
+      <nav class="navbar navbar-light">
+        <h1>承認待一覧(15件）</h1>
+        <a class="nav-link nav-link-back" href="login.html">戻る</a>
+        <a class="nav-link nav-link-sort float-xs-right">表示切替</a>
+      </nav><!-- /.navbar -->
+      
+      <!--:: 承認待ち一覧（カード） ::-->
+      <div class="container-fulid cards-wrapper">
+          <div class="card col-xs-11 card-expense">
+            <header class="card-title">
+              <span>2/15件</span>
+              <h2>立替金精算</h2>
+            </header><!-- /.card-title -->
 
+            <div class="container card-info__basic">
+              <div class="row">
+                <div class="col-xs-5">
+                  <span class="font-small">申請日</span>
+                  <strong class="font--level3">2016/07/26</strong>
+                </div>
+                <div class="col-xs-7">
+                  <span class="font-small">申請番号</span>
+                  <strong class="font--level3">1607EAGSC000182</strong>
+                </div>
+              </div>
+              <div class="row">
+                <h3>前川　ゆかり</h3>
+                <span>（入力者：前川　ゆかり）</span>
+              </div>
+              <hr>
+              <dl class="clearfix">
+                <dt class="pull-left">請求金額合計</dt>
+                <dd class="pull-right"><strong class="font--level1">30,000円</strong><br>内消費税 2,371円</dd>
+              </dl>
+              <hr>
+              <dl class="clearfix">
+                <dt class="pull-left">支払日</dt>
+                <dd class="pull-right">2016 年 10 月 05 日</dd>
+              </dl>
+              <dl class="clearfix">
+                <dt class="pull-left">精算目的</dt>
+                <dd class="pull-right">旅費・交通費・宿泊費/通常国内/通常</dd>
+              </dl>
+              <dl class="clearfix">
+                <dt class="pull-left">摘要</dt>
+                <dd class="pull-right">出張時の日当</dd>
+              </dl>
+            </div><!-- /.card-info__basic -->
+          </div><!-- /.card -->
+      </div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
 </html>
