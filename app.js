@@ -19,6 +19,7 @@ var app = express();
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
+app.use(basicAuth('tfhd', 'tfhd2016'));
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
