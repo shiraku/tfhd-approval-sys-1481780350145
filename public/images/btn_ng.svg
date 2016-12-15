@@ -1,0 +1,35 @@
+<svg id="btn_ng.svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="127" height="127" viewBox="0 0 127 127">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d70909;
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        font-size: 34px;
+        font-family: HiraKakuPro-W3, "Hiragino Kaku Gothic Pro";
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill-rule: evenodd;
+      }
+    </style>
+    <filter id="filter" x="2594" y="4496" width="127" height="127" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="2" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.646"/>
+      <feFlood result="flood" flood-opacity="0.26"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <circle id="Ellipse_3_copy_2" data-name="Ellipse 3 copy 2" class="cls-1" cx="63" cy="61" r="57"/>
+  <g>
+    <text id="不可" class="cls-2" x="28.998" y="99.001">不可</text>
+    <path class="cls-3" d="M2679,4550.6l-12.75-11.77,11.96-12.21-8.84-8.63-12.12,12.53-3.55-3.28-8.95-8.48-8.76,8.52,12.81,11.97-3.34,3.45-8.68,8.75,8.72,8.55,12.19-12.44,12.47,11.67Z" transform="translate(-2594 -4496)"/>
+  </g>
+</svg>
