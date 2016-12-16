@@ -2,7 +2,7 @@ $(function(){
   //******************************************
   // 基本情報の詳細ボタン押下時
   //******************************************
-  $('.link__disp-detail--basic').on('tap',function(){
+  $('.link__disp-detail--basic').on('click',function(){
     var self = $(this)
     var idElem = $(this).parents('.card'); 
     idElem.find('.card__detail-wrapper').toggle(100,function(){
@@ -20,7 +20,7 @@ $(function(){
   //******************************************
   // 詳細情報の詳細ボタン押下時
   //******************************************
-  $('.link__disp-detail--option').on('tap',function(){
+  $('.link__disp-detail--option').on('click',function(){
     var self = $(this)
     var targetElem = $(this).next(); 
     targetElem.toggle(100,function(){
