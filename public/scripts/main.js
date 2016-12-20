@@ -104,7 +104,7 @@ $(function(){
           targetCard.addClass('card-finished');
           targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
           targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
-          targetCard.find('.btn-send').off('touchstart');
+          targetCard.find('.btn__action').off('touchstart');
         },
         error: function(result){
           //！！！！！テスト用ダミー処理、開発時にエラー用表示の処理に変更お願いします！！！！！
@@ -113,7 +113,7 @@ $(function(){
           targetCard.addClass('card-finished');
           targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
           targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
-          targetCard.find('.btn-send').off('touchstart');
+          targetCard.find('.btn__action').off('touchstart');
 
         }
       });
@@ -165,7 +165,7 @@ function createApproveModal(card){
         targetCard.addClass('card-finished');
         targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
         targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
-        targetCard.find('.btn-send').off('touchstart');
+        targetCard.find('.btn__action').off('touchstart');
       },
       error: function(result){
         //！！！！！テスト用ダミー処理、開発時にエラー用表示の処理に変更お願いします！！！！！
@@ -174,7 +174,7 @@ function createApproveModal(card){
         targetCard.addClass('card-finished');
         targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
         targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
-        targetCard.find('.btn-send').off('touchstart');
+        targetCard.find('.btn__action').off('touchstart');
 
       }
     });

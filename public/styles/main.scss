@@ -7,7 +7,7 @@ $set_prefix: -webkit-, -moz-, -ms-, -o-, '';
 //フォントカラー変数
 $color-level1: #c20000;
 //立替精算
-$color-level2: #89ce27;
+$color-level2: #48AF46;
 //オレンジ
 $color-level3: #ff8b00;
 //グレー色
@@ -22,10 +22,10 @@ $color-link: #5a70e0;
 
 
 //フォントカラー変数
-$size-main: 10pt;
-$size-s: 8pt;
-$size-l: 12pt;
-$size-xl: 14pt;
+$size-main: 11pt;
+$size-s: 9pt;
+$size-l: 13pt;
+$size-xl: 15pt;
 
 // 画像のパス
 $img_path: "../img/";
@@ -441,7 +441,7 @@ svg {
 //立替申請
 .card-expense{
   .card-title{
-    background: $color-level2;
+    background: #89ce27;
   }
   .card__basic hr {
     border-color: $color-level2;
