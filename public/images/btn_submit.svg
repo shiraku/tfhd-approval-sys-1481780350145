@@ -1,0 +1,33 @@
+<svg id="btn_submit.svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163" height="163" viewBox="0 0 163 163">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4c6edb;
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        font-size: 34px;
+        font-family: HiraKakuPro-W3, "Hiragino Kaku Gothic Pro";
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill-rule: evenodd;
+      }
+    </style>
+    <filter id="filter" x="5860" y="3122" width="163" height="163" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="2" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.646"/>
+      <feFlood result="flood" flood-opacity="0.26"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <circle id="Ellipse_3_copy_3" data-name="Ellipse 3 copy 3" class="cls-1" cx="81" cy="79" r="75"/>
+  <text id="送信" class="cls-2" x="47.002" y="129.564">送信</text>
+  <path id="Shape_2_copy" data-name="Shape 2 copy" class="cls-3" d="M5901.01,3189.73l14.09-13.77,13.69,13.45,38.13-39.41,14.09,13.77-52.16,53.22Z" transform="translate(-5860 -3122)"/>
+</svg>

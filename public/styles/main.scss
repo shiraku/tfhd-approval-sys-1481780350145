@@ -6,15 +6,26 @@ $set_prefix: -webkit-, -moz-, -ms-, -o-, '';
 
 //フォントカラー変数
 $color-level1: #c20000;
+//立替精算
 $color-level2: #89ce27;
+//オレンジ
 $color-level3: #ff8b00;
+//グレー色
+$color-level4: #989898;
+//承認者カラー
+$color-level5: #454d93;
+//取引先カラー
+$color-level6: #27b5ce;
+//処理後のフォント色
+$color-level7: #cccccc;
+$color-link: #5a70e0;
 
 
 //フォントカラー変数
-$size-main: 14pt;
-$size-s: 10pt;
-$size-l: 15pt;
-$size-xl: 16pt;
+$size-main: 10pt;
+$size-s: 8pt;
+$size-l: 12pt;
+$size-xl: 14pt;
 
 // 画像のパス
 $img_path: "../img/";
@@ -60,6 +71,11 @@ $base_font_ie: "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
 	_height: $value;
 }
 
+@mixin placeholder($value){
+	@each $prefix in $set_prefix {
+		#{$prefix}input-placeholder: $value;
+	}
+}
 
 
 // ===================================================================
@@ -79,8 +95,17 @@ $base_font_ie: "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
 html,body {
   font-size: $size-main;
   background: #dddbcf;
+  color: #333333;
 }
-
+.btn-primary {
+  background: #4c6edb;
+  @include drop_shadow(0,2px,5px,0,rgba(0, 0, 0, 0.15));
+}
+.btn-disable {
+  background: #999999;
+  color: #ffffff;
+  @include drop_shadow(0,2px,5px,0,rgba(0, 0, 0, 0.15));
+}
 
 // ===================================================================
 // オリジナル定義
@@ -88,6 +113,9 @@ html,body {
 //utility
 .font-small {
   font-size: $size-s;
+}
+.color-important {
+  color: $color-level1;
 }
 
 //ヘッダー
@@ -104,24 +132,116 @@ h1 {
   position: absolute;
   left: 20px;
   top:10px;
+  padding-left: 20px;
+  background: url('../images/back.svg') no-repeat;
+  background-size: 13px;
 }
 
 .nav-link-sort {
   position: absolute;
-  right: 20px;
-  top:10px;
+  right: 10px;
+  top:0px;
+  color: #000000;
+  margin-left:10px;
+  padding-left: 25px;
+  padding:13px 0 13px 25px;
+  background: url('../images/icon_sort.png') 5px 50% no-repeat;
+  background-size: 16px;
+  border-left:1px #e0e0e0 solid;
 }
 
+// ===================================================================
+// ログイン周り
+// ===================================================================
+.login {
+  background: url('../images/bg_login.jpg') no-repeat;
+  background-size: cover;
+  height: 100vh;
+  
+  
+  form{
+    position: absolute;
+    width: 70vw;
+    top: 50vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+  }
+  p {
+    margin-bottom: 20px;
+    border-bottom: 1px #ffffff solid;
+  }
+  input {
+    height: 40px;
+    background: transparent;
+    border: none 0px;
+    color: #ffffff;
+    font-size: $size-xl;
+    
+    &::-webkit-input-placeholder {
+        color: #ffffff;
+        font-weight: normal;
+    }
+    &:-ms-input-placeholder {
+        color: #ffffff;
+        font-weight: normal;
+    }
+    &:-moz-placeholder {
+        color: #ffffff;
+        font-weight: normal;
+    }
+  }
+  .alert {
+    position: absolute;
+    margin-top: -90px;
+  }
+  .readTxt {
+    color: #ffd800;
+    position: absolute;
+    width: 80vw;
+    top: 35vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+  }
+}
+.tooltip {
+  left: 0;
+  right: 0;
+  margin: -3px auto auto auto;
+}
+.tooltip-inner {
+  max-width: 80vw;
+}
+
+
+
+// ===================================================================
+// 申請待一覧　共通定義
+// ===================================================================
 //申請待一覧
 .cards-wrapper{
-  padding: 0 20px
+  padding: 0 20px;
+  overflow-x:auto; 
+  overflow-y:hidden; 
+  white-space:nowrap;
+  width:100%;
 }
 
+
+//カードデザイン
 .card {
+  position: relative;
+  display:inline-block;
   padding: 0;
-  background: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 160px;
+  vertical-align: top;
+  background: #f3f3f3;
   @include border_radius(10px);
-  @include drop_shadow(0,2px,7px,0,rgba(0, 0, 0, 0.15));
+  white-space:normal;
   
   .card-title{
     padding: 10px 20px;
@@ -138,16 +258,278 @@ h1 {
     font-size: $size-l;
     text-align: center;
   }
-}
-.card-expense{
-  .card-title{
-    background: #89ce27;
+  h3 {
+    text-align: center;
+    font-size: $size-xl;
+  }
+  .card__inputer {
+    display: block;
+    text-align: center;
+    font-size: $size-s;
+  }
+  dl {
+    font-size: $size-main;
+  }
+  dt {
+    float: left;
+    font-weight: normal;
+    color: $color-level4;
+  }
+  dd {
+    float: right;
+    text-align: right;
+  }
+  .card__expense {
+    font-size: $size-xl;
+    color: $color-level1;
+  }
+  .link__disp-detail {
+    text-align: center;
+    cursor: pointer;
+    color: $color-link;
+  }
+  .state--update {
+    background: #ffaaf5;
   }
 }
 
-.card-info__basic{
-  
+//基本情報　共通
+.card__basic{
+  padding: 20px 20px 10px 20px; 
+  background: #ffffff;
+  @include border_radius_custom(0, 0, 10px, 10px);
+  @include drop_shadow(0,2px,7px,0,rgba(0, 0, 0, 0.15));
+  .card__approveDate{
+    color:$color-level3;
+  }
   strong{
     font-weight: normal;
+  }
+}
+
+//詳細情報　共通
+.card__detail-wrapper{
+  display: none;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  
+  h4 {
+    font-weight: bold;
+  }
+  
+  hr {
+    margin: 0 0 10px 0;
+    border-color: #ffffff;
+    @include drop_shadow(0,-1px,0,0,rgba(0, 0, 0, 0.15));
+  }
+  .card__detail-subtit {
+    font-size: $size-l;
+    color: $color-level2;
+    font-weight: normal;
+  }
+}
+
+
+.card__detail-wrapper{
+  padding-top: 40px;
+  padding-bottom: 20px;
+  
+  h4 {
+    font-weight: bold;
+  }
+  
+  hr {
+    margin: 0 0 10px 0;
+    border-color: #ffffff;
+    @include drop_shadow(0,-1px,0,0,rgba(0, 0, 0, 0.15));
+  }
+  .card__detail-subtit {
+    font-size: $size-l;
+    color: $color-level2;
+    font-weight: normal;
+  }
+}
+
+.card__detail {
+  .card__inputer {
+    margin-bottom:40px;
+  }
+}
+.card__detail--option {
+  display: none;
+}
+
+.card__flow{
+  margin-top: -10px;
+  padding: 20px;
+  background: #ffffff;
+  @include border_radius_custom(0, 0, 10px, 10px);
+  @include drop_shadow(0,2px,7px,0,rgba(0, 0, 0, 0.15));
+  
+  .card__flowv-confirmer dt{
+    color:$color-level2;
+  }
+  .card__flowv-approver dt{
+    color:$color-level5;
+  }
+  /*
+  .card__flowv-approver:after{
+    content:'';
+    display: block;
+    height: 50px;
+    background: url('../images/arrow_down.svg') 50% no-repeat;
+    background-size: 15%;
+  }
+  .card__flowv-approver:last-child:after{
+    content:'';
+    display: block;
+    height: 0px;
+    background: none;
+  }
+  */
+  .card__flowv-approver{
+    padding-top:20px;
+    border-top: 1px rgba(0, 0, 0, 0.15) solid;
+  }
+}
+
+
+//送信ボタン
+.btn_ctrl {
+  position: absolute;
+  margin-top: 20px;
+  right: 20px;
+  list-style: none;
+  
+  li {
+    display: inline-block;
+    margin-left:10px;
+  }
+  
+}
+
+svg {
+  .ng_st0{fill:#D70909;}
+ .dis_st0{fill:#dd6a09;}
+  .ok_st0{fill:#48AF46;}
+  .fin_st0{fill:#999999;}
+  .send_st0{fill:#4c6edb;}
+ .st1{fill:#FFFFFF;}
+ .st2{font-family:'HiraKakuPro-W3-83pv-RKSJ-H';}
+ .st3{font-size:34px;}
+}
+
+.link-gototop {
+  float: right;
+  text-align: right;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding-left: 20px;
+  background: url(../images/arrow_up.svg) no-repeat;
+  background-size: 20px;
+}
+  .link-gototop--pagebtm {
+    margin-top: 100px;
+    position: absolute;
+    right: 20px;
+  }
+
+
+// ===================================================================
+// 申請待一覧　申請種別別定義
+// ===================================================================
+//立替申請
+.card-expense{
+  .card-title{
+    background: $color-level2;
+  }
+  .card__basic hr {
+    border-color: $color-level2;
+  }
+}
+//取引先申請
+.card-business{
+  .card-title{
+    background: $color-level6;
+  }
+  .card__basic hr {
+    border-color: $color-level6;
+  }
+  .card__subtitle {
+    margin: 40px 20px 10px 20px;
+    text-align: left;
+  }
+}
+//取引先情報　取引先申請
+.card__company {
+  padding: 20px;
+  background: #ffffff;
+  @include border_radius(10px);
+  @include drop_shadow(0,2px,7px,0,rgba(0, 0, 0, 0.15));
+  .card__approveDate{
+    color:$color-level3;
+  }
+  strong{
+    font-weight: normal;
+  }
+  .card__inputer {
+    margin-bottom:40px;
+  }
+}
+
+
+//処理後のカードデザイン
+.card-finished {
+  background: #dcdcdc;
+  color: $color-level7 !important;
+  
+  .card-title {
+    background: #808080;
+  }
+  .card__basic {
+    background: #eaeaea;
+  }
+  .card__company {
+    background: #eaeaea;
+  }
+  .card__flow{
+    background: #eaeaea;
+  }
+  dt {
+    color: $color-level7;
+  }
+  hr{
+    border-color: $color-level7 !important; 
+  }
+  .card__approveDate {
+    color: $color-level7;
+  }
+  .card__expense {
+    color: $color-level7;
+  }
+  .card-expense{
+    .card-title{
+      background: $color-level7;
+    }
+    .card__basic hr {
+      border-color: $color-level7;
+    }
+  }
+  .card-business{
+    .card-title{
+      background: $color-level7;
+    }
+    .card__basic hr {
+      border-color: $color-level7;
+    }
+  }
+  .card__detail-subtit {
+    color: $color-level7;
+  }
+  .card__flowv-confirmer dt{
+    color:$color-level7;
+  }
+  .card__flowv-approver dt{
+    color:$color-level7;
   }
 }

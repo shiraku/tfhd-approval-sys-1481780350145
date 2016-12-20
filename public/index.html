@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>approval_html</title>
+    <title>承認待一覧</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -27,6 +27,23 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     
+    
+    <!-- モーダル表示エリア -->
+    <div class="modal fade" id="actionModal" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="actionModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div class="container-fulid">
       <nav class="navbar navbar-light">
         <h1>承認待一覧(15件）</h1>
@@ -36,6 +53,7 @@
       
       <!--:: 承認待ち一覧（カード） ::-->
       <div class="cards-wrapper">
+          <!--！！ idにユニークとなるIDまたは番号を振ってください。 ！！-->
           <div id="card001" class="card card-expense">
             <header class="card-title">
               <span>1/15件</span>
@@ -102,7 +120,7 @@
                 <p class="link__disp-detail link__disp-detail--option">詳細情報を開く</p>
                 <div class="card__detail--option">
                   <dl class="clearfix">
-                    <dt>ビジネスユニット</dt>
+                    <dt>BU</dt>
                     <dd>2005498 HD企政政策</dd>
                   </dl>
                   <dl class="clearfix">
@@ -137,7 +155,7 @@
                 <p class="link__disp-detail link__disp-detail--option">詳細情報を開く</p>
                 <div class="card__detail--option">
                   <dl class="clearfix">
-                    <dt>ビジネスユニット</dt>
+                    <dt>BU</dt>
                     <dd>2005498 HD企政政策</dd>
                   </dl>
                   <dl class="clearfix">
@@ -176,7 +194,7 @@
                 <p class="link__disp-detail link__disp-detail--option">詳細情報を開く</p>
                 <div class="card__detail--option">
                   <dl class="clearfix">
-                    <dt>ビジネスユニット</dt>
+                    <dt>BU</dt>
                     <dd>2005498 HD企政政策</dd>
                   </dl>
                   <dl class="clearfix">
@@ -230,10 +248,10 @@
                 </dl>
             </div><!-- /.card__flow -->
             <ul class="btn_ctrl">
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__improper">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="55px" height="55px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
+                  x="0px" y="0px" width="45px" height="45px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
                   xml:space="preserve">
                 <circle id="Ellipse_3_copy_2_1_" class="ng_st0" cx="57" cy="57" r="57"/>
                 <g>
@@ -243,10 +261,10 @@
                 </g>
                 </svg>
               </a></li>
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__back">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="55px" height="55px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
+                  x="0px" y="0px" width="45px" height="45px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
                   xml:space="preserve">
                 <circle id="Ellipse_3_copy_1_" class="dis_st0" cx="57" cy="57" r="57"/>
                 <g>
@@ -256,10 +274,10 @@
                 </g>
                 </svg>
               </a></li>
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__approve">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="75px" height="75px" viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;"
+                  x="0px" y="0px" width="60px" height="60px" viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;"
                   xml:space="preserve">
                 <circle class="ok_st0" cx="75" cy="75" r="75"/>
                 <g>
@@ -337,7 +355,7 @@
                 <p class="link__disp-detail link__disp-detail--option">詳細情報を開く</p>
                 <div class="card__detail--option">
                   <dl class="clearfix">
-                    <dt>ビジネスユニット</dt>
+                    <dt>BU</dt>
                     <dd>2005498 HD企政政策</dd>
                   </dl>
                   <dl class="clearfix">
@@ -372,7 +390,7 @@
                 <p class="link__disp-detail link__disp-detail--option">詳細情報を開く</p>
                 <div class="card__detail--option">
                   <dl class="clearfix">
-                    <dt>ビジネスユニット</dt>
+                    <dt>BU</dt>
                     <dd>2005498 HD企政政策</dd>
                   </dl>
                   <dl class="clearfix">
@@ -411,7 +429,7 @@
                 <p class="link__disp-detail link__disp-detail--option">詳細情報を開く</p>
                 <div class="card__detail--option">
                   <dl class="clearfix">
-                    <dt>ビジネスユニット</dt>
+                    <dt>BU</dt>
                     <dd>2005498 HD企政政策</dd>
                   </dl>
                   <dl class="clearfix">
@@ -465,10 +483,10 @@
                 </dl>
             </div><!-- /.card__flow -->
             <ul class="btn_ctrl">
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__improper">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="55px" height="55px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
+                  x="0px" y="0px" width="45px" height="45px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
                   xml:space="preserve">
                 <circle id="Ellipse_3_copy_2_1_" class="fin_st0" cx="57" cy="57" r="57"/>
                 <g>
@@ -478,10 +496,10 @@
                 </g>
                 </svg>
               </a></li>
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__back">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="55px" height="55px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
+                  x="0px" y="0px" width="45px" height="45px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
                   xml:space="preserve">
                 <circle id="Ellipse_3_copy_1_" class="fin_st0" cx="57" cy="57" r="57"/>
                 <g>
@@ -491,10 +509,10 @@
                 </g>
                 </svg>
               </a></li>
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__approve">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="75px" height="75px" viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;"
+                  x="0px" y="0px" width="60px" height="60px" viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;"
                   xml:space="preserve">
                 <circle class="fin_st0" cx="75" cy="75" r="75"/>
                 <g>
@@ -546,7 +564,7 @@
             <div class="container-fulid card__company">
               <div class="row">
                 <h3>（株）東急コミュニティー</h3>
-                <span class="card__inputer">東京都世田谷区用賀４－１０－１</span>
+                <span class="card__inputer state--update">東京都世田谷区用賀４－１０－１</span>
               </div>
               <dl class="clearfix">
                 <dt>取引先コード</dt>
@@ -638,10 +656,10 @@
                 </dl>
             </div><!-- /.card__flow -->
             <ul class="btn_ctrl">
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__improper">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="55px" height="55px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
+                  x="0px" y="0px" width="45px" height="45px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
                   xml:space="preserve">
                 <circle id="Ellipse_3_copy_2_1_" class="ng_st0" cx="57" cy="57" r="57"/>
                 <g>
@@ -651,10 +669,10 @@
                 </g>
                 </svg>
               </a></li>
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__back">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="55px" height="55px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
+                  x="0px" y="0px" width="45px" height="45px" viewBox="0 0 114 114" style="enable-background:new 0 0 114 114;"
                   xml:space="preserve">
                 <circle id="Ellipse_3_copy_1_" class="dis_st0" cx="57" cy="57" r="57"/>
                 <g>
@@ -664,10 +682,10 @@
                 </g>
                 </svg>
               </a></li>
-              <li><a href="">
+              <li><a data-toggle="modal" data-target="#actionModal" class="btn__approve">
                 <svg version="1.1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                  x="0px" y="0px" width="75px" height="75px" viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;"
+                  x="0px" y="0px" width="60px" height="60px" viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;"
                   xml:space="preserve">
                 <circle class="ok_st0" cx="75" cy="75" r="75"/>
                 <g>
