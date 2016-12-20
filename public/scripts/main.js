@@ -83,6 +83,7 @@ $(function(){
     modalBox.find('.modal-body').eq(0).html(modalObj.body);
     modalBox.find('.modal-footer').eq(0).html(modalObj.footer);
     
+    
     $('#actionModal').modal('toggle');
   });
   $('#actionModal').on('shown.bs.modal', function(e){
@@ -99,10 +100,14 @@ $(function(){
         data: form.serialize(),
         complete: function(result){
           $('#actionModal').modal('hide');
-          $('#' + form.find('input[name="cardId"]')[0].value).addClass('card-finished');
+          var targetCard = $('#' + form.find('input[name="cardId"]')[0].value)
+          targetCard.addClass('card-finished');
+          targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
+          targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
+          targetCard.find('.btn-send').off('touchstart');
         },
         error: function(result){
-          //！！！！！テスト用ダミー処理、開発時に変更お願いします！！！！！
+          //！！！！！テスト用ダミー処理、開発時にエラー用表示の処理に変更お願いします！！！！！
           $('#actionModal').modal('hide');
           var targetCard = $('#' + form.find('input[name="cardId"]')[0].value)
           targetCard.addClass('card-finished');
@@ -113,6 +118,8 @@ $(function(){
         }
       });
     });
+    
+    
   });
   
 });
@@ -140,7 +147,38 @@ function createApproveModal(card){
   var obj = new Object();
   obj.label = "承認";
   obj.body = '承認しました。<form id="sendMessage" action="■■POST先を指定してください■■" method="post"><input type="hidden" name="cardId" value="' + card.attr('id') + '"><input type="hidden" name="submitType" value="back"></form>';
-  obj.footer = '<button type="button" class="btn btn-primary btn-send">閉じる</button>';
+  obj.footer = '<button type="button" class="btn btn-primary btn-close">閉じる</button>';
+
+  //送信ボタンタップ時の処理
+  $('#actionModal').on('hidden.bs.modal', function(e){
+    $('#actionModal').off('hidden.bs.modal');
+
+    var form = $('#sendMessage');
+
+    $.ajax({
+      url: form.attr('action'),
+      type: form.attr('method'),
+      data: form.serialize(),
+      complete: function(result){
+        $('#actionModal').modal('hide');
+        var targetCard = $('#' + form.find('input[name="cardId"]')[0].value)
+        targetCard.addClass('card-finished');
+        targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
+        targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
+        targetCard.find('.btn-send').off('touchstart');
+      },
+      error: function(result){
+        //！！！！！テスト用ダミー処理、開発時にエラー用表示の処理に変更お願いします！！！！！
+        $('#actionModal').modal('hide');
+        var targetCard = $('#' + form.find('input[name="cardId"]')[0].value)
+        targetCard.addClass('card-finished');
+        targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
+        targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
+        targetCard.find('.btn-send').off('touchstart');
+
+      }
+    });
+  });
   
   return obj;
 }
