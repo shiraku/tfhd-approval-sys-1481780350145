@@ -147,7 +147,7 @@ function createApproveModal(card){
   var obj = new Object();
   obj.label = "承認";
   obj.body = '承認しました。<form id="sendMessage" action="■■POST先を指定してください■■" method="post"><input type="hidden" name="cardId" value="' + card.attr('id') + '"><input type="hidden" name="submitType" value="back"></form>';
-  obj.footer = '<button type="button" class="btn btn-primary btn-close">閉じる</button>';
+  obj.footer = '<button type="button" data-dismiss="modal" class="btn btn-primary btn-close">閉じる</button>';
 
   //送信ボタンタップ時の処理
   $('#actionModal').on('hidden.bs.modal', function(e){

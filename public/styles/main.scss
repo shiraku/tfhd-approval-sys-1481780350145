@@ -199,12 +199,17 @@ h1 {
   .readTxt {
     color: #ffd800;
     position: absolute;
-    width: 80vw;
+    width: 85vw;
     top: 35vh;
     left: 0;
     right: 0;
     margin: auto;
     text-align: center;
+  }
+  .btn-password,
+  .btn-submit{
+    background: #dadada;
+    color: $color-level2;
   }
 }
 .tooltip {
@@ -303,6 +308,7 @@ h1 {
     color:$color-level3;
   }
   strong{
+    font-size: $size-s;
     font-weight: normal;
   }
 }
