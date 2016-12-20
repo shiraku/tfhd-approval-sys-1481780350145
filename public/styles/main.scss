@@ -123,7 +123,7 @@ html,body {
   background: #ffffff;
 }
 h1 {
-  margin-top: 10px; 
+  margin-top: 15px; 
   text-align: center;
   font-size: $size-l;
 }
@@ -131,7 +131,7 @@ h1 {
 .nav-link-back {
   position: absolute;
   left: 20px;
-  top:10px;
+  top:15px;
   padding-left: 20px;
   background: url('../images/back.svg') no-repeat;
   background-size: 13px;
@@ -144,7 +144,7 @@ h1 {
   color: #000000;
   margin-left:10px;
   padding-left: 25px;
-  padding:13px 0 13px 25px;
+  padding:15px 0 15px 25px;
   background: url('../images/icon_sort.png') 5px 50% no-repeat;
   background-size: 16px;
   border-left:1px #e0e0e0 solid;
@@ -177,7 +177,7 @@ h1 {
     background: transparent;
     border: none 0px;
     color: #ffffff;
-    font-size: $size-xl;
+    font-size: $size-l;
     
     &::-webkit-input-placeholder {
         color: #ffffff;
@@ -265,7 +265,11 @@ h1 {
   }
   h3 {
     text-align: center;
-    font-size: $size-xl;
+    font-size: $size-l;
+  }
+  h4 {
+    text-align: left;
+    font-size: $size-main;
   }
   .card__inputer {
     display: block;
@@ -304,6 +308,9 @@ h1 {
   background: #ffffff;
   @include border_radius_custom(0, 0, 10px, 10px);
   @include drop_shadow(0,2px,7px,0,rgba(0, 0, 0, 0.15));
+  h3 {
+    font-size: $size-xl;
+  }
   .card__approveDate{
     color:$color-level3;
   }
@@ -478,7 +485,7 @@ svg {
   strong{
     font-weight: normal;
   }
-  .card__inputer {
+  .card__inputer:last-child {
     margin-bottom:40px;
   }
 }
