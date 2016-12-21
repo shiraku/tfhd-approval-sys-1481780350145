@@ -1,6 +1,11 @@
 $(function(){
+  if($('.card-non').length != 0) {
+    return false;
+  }
   
-  $(document).ready(function(){
+  //******************************************
+  // 横スクロール初期化
+  //******************************************
   $('.cards-wrapper').slick({
     arrows: false,
     centerMode: true,
@@ -10,15 +15,15 @@ $(function(){
     centerPadding: '20px',
     adaptiveHeight: true
   });
-    $('.cards-wrapper').on('swipe', function(){
-      var speed = 200;
-      var target = $('html');
-      var position = target.offset().top;
-      $('body,html').animate({scrollTop: position}, speed, 'swing');
-      $('.cards-wrapper').slick('updateInfinite');
-    });
-});
   
+  $('.cards-wrapper').on('swipe', function(){
+    var speed = 200;
+    var target = $('html');
+    var position = target.offset().top;
+    $('body,html').animate({scrollTop: position}, speed, 'swing');
+    $('.cards-wrapper').slick('updateInfinite');
+  });
+
   //******************************************
   // 基本情報の詳細ボタン押下時
   //******************************************
@@ -212,6 +217,16 @@ function createApproveModal(card){
 //******************************************
 // 横数スクロール
 //******************************************
+/*
+ slick.js
+ Version: 1.6.0
+  Author: Ken Wheeler
+ Website: http://kenwheeler.github.io
+    Docs: http://kenwheeler.github.io/slick
+    Repo: http://github.com/kenwheeler/slick
+  Issues: http://github.com/kenwheeler/slick/issues
+
+ */
 (function(factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {

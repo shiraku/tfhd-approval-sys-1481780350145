@@ -141,7 +141,7 @@ h1 {
   position: absolute;
   right: 10px;
   top:0px;
-  color: #000000;
+  color: $color-link;
   margin-left:10px;
   padding-left: 25px;
   padding:15px 0 15px 25px;
@@ -490,6 +490,16 @@ svg {
   }
   .card__inputer:last-child {
     margin-bottom:40px;
+  }
+}
+.card-non {
+  .card__basic {
+    @include border_radius(10px);
+    padding: 20px;
+  }
+  
+  h4{
+    text-align: center;
   }
 }
 
