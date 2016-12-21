@@ -4,9 +4,11 @@ $(function(){
   $('.cards-wrapper').slick({
     arrows: false,
     centerMode: true,
+    slideToShow: 1,
     mobileFirst:true,
     dots: false,
-    centerPadding: '20px'
+    centerPadding: '20px',
+    adaptiveHeight: true
   });
     $('.cards-wrapper').on('swipe', function(){
       var speed = 200;
@@ -116,7 +118,9 @@ $(function(){
         type: form.attr('method'),
         data: form.serialize(),
         complete: function(result){
+          //モーダルを非表示
           $('#actionModal').modal('hide');
+          //ボタンが押されたカードをグレー化とボタンの無効化
           var targetCard = $('#' + form.find('input[name="cardId"]')[0].value)
           targetCard.addClass('card-finished');
           targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
@@ -125,7 +129,9 @@ $(function(){
         },
         error: function(result){
           //！！！！！テスト用ダミー処理、開発時にエラー用表示の処理に変更お願いします！！！！！
+          //モーダルを非表示
           $('#actionModal').modal('hide');
+          //ボタンが押されたカードをグレー化とボタンの無効化
           var targetCard = $('#' + form.find('input[name="cardId"]')[0].value)
           targetCard.addClass('card-finished');
           targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
