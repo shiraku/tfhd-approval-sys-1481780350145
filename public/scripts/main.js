@@ -13,17 +13,39 @@ $(function(){
     mobileFirst:true,
     dots: false,
     centerPadding: '20px',
-    adaptiveHeight: true
+    adaptiveHeight: true,
+    infinite:false
   });
   
+  //スワイプ時の処理
   $('.cards-wrapper').on('swipe', function(){
     var speed = 200;
     var target = $('html');
     var position = target.offset().top;
     $('body,html').animate({scrollTop: position}, speed, 'swing');
-    $('.cards-wrapper').slick('updateInfinite');
+    if($('#btn_goto_first').attr('data-dispFlg') == 'show' && $(this).slick('slickCurrentSlide') != ($('.card').length -1)){
+      var speed = 300;
+      var target = $('#btn_goto_first');
+      var position = target.offset().left + 80;
+      target.animate({left: position}, speed, 'swing');
+      target.attr('data-dispFlg','hide');
+      $('.cards-wrapper').on('edge', dispGotoBtn);
+    }
   });
-
+  //一番端まできた時の処理
+  $('.cards-wrapper').on('edge', dispGotoBtn);
+  //戻るボタン押下時
+  $('#btn_goto_first').on('touchstart',function(){
+    $('.cards-wrapper').slick('slickGoTo','0');
+      var speed = 300;
+      var target = $('#btn_goto_first');
+      var position = target.offset().left + 80;
+      target.animate({left: position}, speed, 'swing');
+      target.attr('data-dispFlg','hide');
+      $('.cards-wrapper').on('edge', dispGotoBtn);
+  });
+  
+  
   //******************************************
   // 基本情報の詳細ボタン押下時
   //******************************************
@@ -143,7 +165,33 @@ $(function(){
           targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
           targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
           targetCard.find('.btn__action').off('touchstart');
+          var prams = this.data.split('&');
+          var pram,str,submitType = '';
+          for(var i = 0; i < prams.length; i++){
+            pram = prams[i].split('=');
+            if(pram[0] == 'submitType'){
+              submitType = pram[1] ;
+              break;
+            }
+          }
+          switch(submitType) {
+            case 'improper':
+              str = '<span>（不可済み）</span>';
+              break;
 
+            case 'back':
+              str = '<span>（差戻済み）</span>';
+              break;
+
+            case 'approve':
+              str = '<span>（承認済み）</span>';
+              break;
+
+            default:
+              str = '';
+              break;
+          }
+          targetCard.find('h2').append(str);
         }
       });
     });
@@ -153,6 +201,14 @@ $(function(){
   
 });
 
+function dispGotoBtn(){
+    var speed = 300;
+    var target = $('#btn_goto_first');
+    var position = target.offset().left - 80;
+    target.animate({left: position}, speed, 'swing');
+    target.attr('data-dispFlg','show');
+    $('.cards-wrapper').off('edge');
+  }
 
 function createImproperModal(card){
   var obj = new Object();
@@ -175,39 +231,9 @@ function createBackModal(card){
 function createApproveModal(card){
   var obj = new Object();
   obj.label = "承認";
-  obj.body = '承認しました。<form id="sendMessage" action="■■POST先を指定してください■■" method="post"><input type="hidden" name="cardId" value="' + card.attr('id') + '"><input type="hidden" name="submitType" value="back"></form>';
-  obj.footer = '<button type="button" data-dismiss="modal" class="btn btn-primary btn-close">閉じる</button>';
+  obj.body = '承認しますがよろしいですか？<form id="sendMessage" action="■■POST先を指定してください■■" method="post"><input type="hidden" name="cardId" value="' + card.attr('id') + '"><input type="hidden" name="submitType" value="approve"></form>';
+  obj.footer = '<a data-dismiss="modal" class="pull-left">キャンセル</a><a class="btn-send"><svg id="btn_submit.svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 163 163"><circle id="Ellipse_3_copy_3" data-name="Ellipse 3 copy 3" class="send_st0" cx="81" cy="79" r="75"/><text id="送信" class="st1 st2 st3" x="47.002" y="129.564">承認</text><path id="Shape_2_copy" data-name="Shape 2 copy" class="st1" d="M5901.01,3189.73l14.09-13.77,13.69,13.45,38.13-39.41,14.09,13.77-52.16,53.22Z" transform="translate(-5860 -3122)"/></svg></a>';
 
-  //送信ボタンタップ時の処理
-  $('#actionModal').on('hidden.bs.modal', function(e){
-    $('#actionModal').off('hidden.bs.modal');
-
-    var form = $('#sendMessage');
-
-    $.ajax({
-      url: form.attr('action'),
-      type: form.attr('method'),
-      data: form.serialize(),
-      complete: function(result){
-        $('#actionModal').modal('hide');
-        var targetCard = $('#' + form.find('input[name="cardId"]')[0].value)
-        targetCard.addClass('card-finished');
-        targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
-        targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
-        targetCard.find('.btn__action').off('touchstart');
-      },
-      error: function(result){
-        //！！！！！テスト用ダミー処理、開発時にエラー用表示の処理に変更お願いします！！！！！
-        $('#actionModal').modal('hide');
-        var targetCard = $('#' + form.find('input[name="cardId"]')[0].value)
-        targetCard.addClass('card-finished');
-        targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
-        targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
-        targetCard.find('.btn__action').off('touchstart');
-
-      }
-    });
-  });
   
   return obj;
 }
@@ -3071,52 +3097,7 @@ function createApproveModal(card){
 
     };
   
-    Slick.prototype.updateInfinite = function() {
-
-        var _ = this,
-            i, slideIndex, infiniteCount;
-
-        if (_.options.fade === true) {
-            _.options.centerMode = false;
-        }
-
-        if (_.options.infinite === true && _.options.fade === false) {
-
-            slideIndex = null;
-
-            if (_.slideCount > _.options.slidesToShow) {
-
-                if (_.options.centerMode === true) {
-                    infiniteCount = _.options.slidesToShow + 1;
-                } else {
-                    infiniteCount = _.options.slidesToShow;
-                }
-              
-                $('.slick-cloned', _.$slider).detach();
-
-                for (i = _.slideCount; i > (_.slideCount -
-                        infiniteCount); i -= 1) {
-                    slideIndex = i - 1;
-                    $(_.$slides[slideIndex]).clone(true).attr('id', '')
-                        .attr('data-slick-index', slideIndex - _.slideCount)
-                        .prependTo(_.$slideTrack).addClass('slick-cloned');
-                }
-                for (i = 0; i < infiniteCount; i += 1) {
-                    slideIndex = i;
-                    $(_.$slides[slideIndex]).clone(true).attr('id', '')
-                        .attr('data-slick-index', slideIndex + _.slideCount)
-                        .appendTo(_.$slideTrack).addClass('slick-cloned');
-                }
-                _.$slideTrack.find('.slick-cloned').find('[id]').each(function() {
-                    $(this).attr('id', '');
-                });
-
-            }
-
-        }
-
-    };
-
+  
     $.fn.slick = function() {
         var _ = this,
             opt = arguments[0],

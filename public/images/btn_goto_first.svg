@@ -1,0 +1,35 @@
+<svg id="btn_goto_first.svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163" height="163" viewBox="0 0 163 163">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4c6edb;
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        font-size: 34px;
+        font-family: HiraKakuPro-W3, "Hiragino Kaku Gothic Pro";
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill-rule: evenodd;
+      }
+    </style>
+    <filter id="filter" x="2935" y="568" width="163" height="163" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="2" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.646"/>
+      <feFlood result="flood" flood-opacity="0.26"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <circle id="Ellipse_3_copy_6" data-name="Ellipse 3 copy 6" class="cls-1" cx="81" cy="79" r="75"/>
+  <g id="Group_1_copy" data-name="Group 1 copy">
+    <text id="戻る" class="cls-2" x="47.001" y="129.566">戻る</text>
+    <path class="cls-3" d="M3003.99,596l8.82,8.825-28.99,29L2975,625Zm-20.17,20.171,28.99,29L3003.99,654,2975,625ZM3035.17,596l8.82,8.825-28.98,29L3006.19,625Zm-20.16,20.171,28.98,29L3035.17,654l-28.98-29Z" transform="translate(-2935 -568)"/>
+  </g>
+</svg>

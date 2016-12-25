@@ -1,6 +1,13 @@
+var dispFlg = true;
+
 $(function(){
   //1ツールチップ表示のイベントトリガー
-  $('[data-toggle="tooltip"]').tooltip()
+  if(dispFlg) {
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').on('hidden.bs.tooltip', function () {
+      $('[data-toggle="tooltip"]').tooltip('destroy');
+    })
+  }
   
   $('#finishedModal').on('hidden.bs.modal',function(){
     /* !!!!!!!!!!!!!!!!!
