@@ -202,12 +202,14 @@ $(function(){
 });
 
 function dispGotoBtn(){
-    var speed = 300;
-    var target = $('#btn_goto_first');
-    var position = target.offset().left - 80;
-    target.animate({left: position}, speed, 'swing');
-    target.attr('data-dispFlg','show');
-    $('.cards-wrapper').off('edge');
+    if($('.cards-wrapper').slick('slickCurrentSlide') != 0){
+      var speed = 300;
+      var target = $('#btn_goto_first');
+      var position = target.offset().left - 80;
+      target.animate({left: position}, speed, 'swing');
+      target.attr('data-dispFlg','show');
+      $('.cards-wrapper').off('edge');
+    }
   }
 
 function createImproperModal(card){
