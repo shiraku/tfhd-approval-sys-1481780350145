@@ -26,7 +26,7 @@ $(function(){
     if($('#btn_goto_first').attr('data-dispFlg') == 'show' && $(this).slick('slickCurrentSlide') != ($('.card').length -1)){
       var speed = 300;
       var target = $('#btn_goto_first');
-      var position = target.offset().left + 80;
+      var position = $(window).width();
       target.animate({left: position}, speed, 'swing');
       target.attr('data-dispFlg','hide');
       $('.cards-wrapper').on('edge', dispGotoBtn);
@@ -39,7 +39,7 @@ $(function(){
     $('.cards-wrapper').slick('slickGoTo','0');
       var speed = 300;
       var target = $('#btn_goto_first');
-      var position = target.offset().left + 80;
+      var position = $(window).width();
       target.animate({left: position}, speed, 'swing');
       target.attr('data-dispFlg','hide');
       $('.cards-wrapper').on('edge', dispGotoBtn);
@@ -176,15 +176,15 @@ $(function(){
           }
           switch(submitType) {
             case 'improper':
-              str = '<span>（不可済み）</span>';
+              str = '<span>（不可）</span>';
               break;
 
             case 'back':
-              str = '<span>（差戻済み）</span>';
+              str = '<span>（差戻）</span>';
               break;
 
             case 'approve':
-              str = '<span>（承認済み）</span>';
+              str = '<span>（承認）</span>';
               break;
 
             default:
@@ -199,6 +199,14 @@ $(function(){
     
   });
   
+});
+
+$(window).resize(function(){
+  var w = $(window).width();
+  console.log(w);
+  var dispFlg = $('#btn_goto_first').attr('data-dispFlg');
+  var positionW = (dispFlg == 'show') ? -80 : 0;
+  $('#btn_goto_first').offset({left:w + positionW});
 });
 
 function dispGotoBtn(){

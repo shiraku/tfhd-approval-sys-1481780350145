@@ -97,6 +97,12 @@ html,body {
   background: #dddbcf;
   color: #333333;
 }
+@media (min-width: 768px){
+  .container {
+    width: auto;
+  }
+}
+
 .btn {
   padding: 10px 12px;
 }
@@ -469,9 +475,10 @@ svg {
 
 #btn_goto_first{
   position: fixed;
-  right: -80px;
-  top:100px;
+  left:100vw;
+  top: 100px;
   z-index: 100;
+  padding-left: 0;
   
   li {
     list-style: none;
