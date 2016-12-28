@@ -64,15 +64,27 @@
       <nav class="navbar navbar-light">
         <h1>承認待一覧(5件）</h1>
         <a class="nav-link nav-link-back" href="#">更新</a>
-        <a href="approval1.html" class="nav-link nav-link-sort nav-link-sort--latest float-xs-right">新着順</a>
+          <!--！！ 並び替えの処理はJSにて行っていますが
+            もし初期表示のデフォルトを変更する場合は下記の通り適切な値を付与してください
+            class名nav-link-sort--＊＊＊＊＊とdata-sort-nextが変わります
+            新着順　<a class="nav-link nav-link-sort nav-link-sort--latest float-xs-right" data-sort-next="category">新着順</a>
+            種別順　<a class="nav-link nav-link-sort nav-link-sort--category float-xs-right" data-sort-next="name">種別順</a>
+            名前順　<a class="nav-link nav-link-sort nav-link-sort--name float-xs-right" data-sort-next="latest">名前順</a>
+          ！！-->
+        <a class="nav-link nav-link-sort nav-link-sort--latest float-xs-right" data-sort-next="category">新着順</a>
       </nav><!-- /.navbar -->
       
       <!--:: 承認待ち一覧（カード） ::-->
       <div class="cards-wrapper">
           <!--！！ idにユニークとなるIDまたは番号を振ってください。 ！！-->
-          <div id="card001" class="card card-expense">
+          <!--！！ data-sort-*****はソート処理に使用する値になります。適切な値を付与してください
+            data-sort-lates：新着順　新しい順（または古い順）に連番を振ってください
+            data-sort-category：種別順　１＝建替申請　２＝取引先申請
+            data-sort-name：名前順　申請者の読み仮名を付与（漢字だと文字コード順になるためアイウエオ順になりません）
+          ！！-->
+          <div id="card001" class="card card-expense" data-sort-latest="1" data-sort-category="1" data-sort-name="マエカワ　ユカリ">
             <header class="card-title">
-              <span>1/5件</span>
+              <span class="card-title--number">1/5件</span>
               <h2>立替金精算</h2>
             </header><!-- /.card-title -->
 
@@ -303,9 +315,9 @@
           </div><!-- /.card --> 
         
         
-          <div id="card002" class="card card-expense">
+          <div id="card002" class="card card-expense" data-sort-latest="2" data-sort-category="1" data-sort-name="コバヤシ　タケシ">
             <header class="card-title">
-              <span>2/5件</span>
+              <span class="card-title--number">2/5件</span>
               <h2>立替金精算</h2>
             </header><!-- /.card-title -->
 
@@ -536,9 +548,9 @@
           </div><!-- /.card -->
         
         
-          <div id="card003" class="card card-business">
+          <div id="card003" class="card card-business" data-sort-latest="3" data-sort-category="2" data-sort-name="マエカワ ユカリ">
             <header class="card-title">
-              <span>3/5件</span>
+              <span class="card-title--number">3/5件</span>
               <h2>取引先申請</h2>
             </header><!-- /.card-title -->
 
@@ -710,9 +722,9 @@
         
         
         
-          <div id="card004" class="card card-expense">
+          <div id="card004" class="card card-expense" data-sort-latest="4" data-sort-category="1" data-sort-name="タナカ　シュウジ">
             <header class="card-title">
-              <span>4/5件</span>
+              <span class="card-title--number">4/5件</span>
               <h2>立替金精算</h2>
             </header><!-- /.card-title -->
 
@@ -943,9 +955,9 @@
           </div><!-- /.card -->
         
         
-          <div id="card005" class="card card-business">
+          <div id="card005" class="card card-business" data-sort-latest="5" data-sort-category="2" data-sort-name="サトウ　ヨシツグ">
             <header class="card-title">
-              <span>5/5件</span>
+              <span class="card-title--number">5/5件</span>
               <h2>取引先申請</h2>
             </header><!-- /.card-title -->
 

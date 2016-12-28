@@ -49,7 +49,7 @@ $(function(){
   //******************************************
   // 基本情報の詳細ボタン押下時
   //******************************************
-  $('.link__disp-detail--basic').on('touchstart',function(){
+  $('.cards-wrapper').on('touchstart','.link__disp-detail--basic',function(){
     var self = $(this)
     var idElem = $(this).parents('.card'); 
     idElem.find('.card__detail-wrapper').toggle(100,function(){
@@ -67,7 +67,7 @@ $(function(){
   //******************************************
   // 詳細情報の詳細ボタン押下時
   //******************************************
-  $('.link__disp-detail--option').on('touchstart',function(){
+  $('.cards-wrapper').on('touchstart','.link__disp-detail--option',function(){
     var self = $(this)
     var targetElem = $(this).next(); 
     targetElem.toggle(100,function(){
@@ -83,7 +83,7 @@ $(function(){
   //******************************************
   // モーダル処理
   //******************************************
-  $('.btn__action').on('touchstart',function(e){
+  $('.cards-wrapper').on('touchstart','.btn__action',function(e){
     //トリガーとなったボタンエレメント
     var trigger = $(this);
     //対象のcard
@@ -199,8 +199,16 @@ $(function(){
     
   });
   
+  //******************************************
+  // ソートボタンクリック時
+  //******************************************
+  $('.navbar').on('touchstart','.nav-link-sort',sortCards);
+  
 });
 
+//******************************************
+// ウィンドウリサイズ時の処理
+//******************************************
 $(window).resize(function(){
   var w = $(window).width();
   console.log(w);
@@ -209,6 +217,10 @@ $(window).resize(function(){
   $('#btn_goto_first').offset({left:w + positionW});
 });
 
+
+//******************************************
+// 最初に戻るボタンクリック時の処理
+//******************************************
 function dispGotoBtn(){
     if($('.cards-wrapper').slick('slickCurrentSlide') != 0){
       var speed = 300;
@@ -220,6 +232,9 @@ function dispGotoBtn(){
     }
   }
 
+//******************************************
+// 承認ボタンタップ時のモーダルの中身生成
+//******************************************
 function createImproperModal(card){
   var obj = new Object();
   obj.label = "不可コメント";
@@ -229,6 +244,9 @@ function createImproperModal(card){
   return obj;
 }
 
+//******************************************
+// 差し戻しボタンタップ時のモーダルの中身生成
+//******************************************
 function createBackModal(card){
   var obj = new Object();
   obj.label = "差戻コメント";
@@ -238,6 +256,9 @@ function createBackModal(card){
   return obj;
 }
 
+//******************************************
+// 不可ボタンタップ時のモーダルの中身
+//******************************************
 function createApproveModal(card){
   var obj = new Object();
   obj.label = "承認";
@@ -248,8 +269,72 @@ function createApproveModal(card){
   return obj;
 }
 
+//******************************************
+// ソートボタンタップ時の並び替え処理
+//******************************************
+function sortCards(e){
+  $('.cards-wrapper').slick('unslick');
+  var stat = $(this).attr('data-sort-next');
+  console.log(stat);
+  var cards = $('.card');
+  var btn;
+  
+  $('.cards-wrapper').html(
+    cards.sort(function(a,b){
+      return $(a).attr('data-sort-' + stat) > $(b).attr('data-sort-' + stat) ? 1 : -1;
+    })
+  );
+  cards.each(function(index){
+    $(this).find('.card-title--number').html((index + 1) + '/' + cards.length + '件')
+  });
+  $('.cards-wrapper').slick({
+    arrows: false,
+    centerMode: true,
+    slideToShow: 1,
+    mobileFirst:true,
+    dots: false,
+    centerPadding: '20px',
+    adaptiveHeight: true,
+    infinite:false
+  });
+  
+  //ソート順　新着順 > 種別順 > 名前順
+  switch(stat){
+    case 'latest':
+      btn = '<a class="nav-link nav-link-sort nav-link-sort--latest float-xs-right" data-sort-next="category">新着順</a>';
+      break;
+    case 'category':
+      btn = '<a class="nav-link nav-link-sort nav-link-sort--category float-xs-right" data-sort-next="name">種別順</a>';
+      break;
+    case 'name':
+      btn = '<a class="nav-link nav-link-sort nav-link-sort--name float-xs-right" data-sort-next="latest">名前順</a>';
+      break;
+    default:
+      btn = '<a class="nav-link nav-link-sort nav-link-sort--latest float-xs-right" data-sort-next="category">新着順</a>';
+      break;
+  }
+  $(this).replaceWith(btn);
+}
 
 
+
+
+/*
+     _ _      _       _
+ ___| (_) ___| | __  (_)___
+/ __| | |/ __| |/ /  | / __|
+\__ \ | | (__|   < _ | \__ \
+|___/_|_|\___|_|\_(_)/ |___/
+                   |__/
+
+ Version: 1.6.0
+  Author: Ken Wheeler
+ Website: http://kenwheeler.github.io
+    Docs: http://kenwheeler.github.io/slick
+    Repo: http://github.com/kenwheeler/slick
+  Issues: http://github.com/kenwheeler/slick/issues
+
+ */
 (function(factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
