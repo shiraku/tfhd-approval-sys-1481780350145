@@ -164,7 +164,7 @@ $(function(){
           targetCard.addClass('card-finished');
           targetCard.find('.btn_ctrl a').removeAttr('data-toggle data-target');
           targetCard.find('.btn_ctrl circle').attr('class','fin_st0');
-          targetCard.find('.btn__action').off('touchstart');
+          targetCard.find('.btn__action').off('touchstart').removeClass('btn__action');
           var prams = this.data.split('&');
           var pram,str,submitType = '';
           for(var i = 0; i < prams.length; i++){
